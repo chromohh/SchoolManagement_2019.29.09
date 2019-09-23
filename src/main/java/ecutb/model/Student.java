@@ -12,4 +12,11 @@ public class Student {
         this.email = email;
         this.address = address;
     }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address;}
+    public int getId() { return id; }
+    public String getName() { return name; }
 }
