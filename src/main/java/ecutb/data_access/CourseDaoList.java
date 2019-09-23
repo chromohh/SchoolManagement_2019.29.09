@@ -2,6 +2,7 @@ package ecutb.data_access;
 
 import ecutb.model.Student;
 
+import javax.swing.*;
 import java.util.List;
 
 public class CourseDaoList implements StudentDao {
@@ -9,21 +10,32 @@ public class CourseDaoList implements StudentDao {
 
     @Override
     public Student saveStudent(Student student) {
-        return null;
+      if(!students.contains(student)){ students.add(student); }
+      return student;
     }
 
     @Override
     public Student findByEmail(String email) {
+        for(Student student : students){
+            if(email.equals(student.getEmail())){
+                return student;
+            }
+        }
         return null;
     }
 
     @Override
     public List<Student> findByName(String name) {
-        return null;
+
     }
 
     @Override
     public Student findById(int id) {
+        for(Student student : students){
+            if(id == student.getId()){
+                return student;
+            }
+        }
         return null;
     }
 
@@ -34,6 +46,7 @@ public class CourseDaoList implements StudentDao {
 
     @Override
     public boolean deleteStudent(Student student) {
+        if(students.contains(student)){students.remove(student); return true;}
         return false;
     }
 }

@@ -10,11 +10,17 @@ public class StudentDaoList implements CourseDao {
 
     @Override
     public Course saveCourse(Course course) {
+        if(!courses.contains(course)){courses.add(course); return course;}
         return null;
     }
 
     @Override
     public Course findById(int id) {
+        for(Course course : courses){
+            if(id == course.getId()){
+                return course;
+            }
+        }
         return null;
     }
 
@@ -35,6 +41,7 @@ public class StudentDaoList implements CourseDao {
 
     @Override
     public boolean removeCourse(Course course) {
+        if(courses.contains(course)){courses.remove(course); return true;}
         return false;
     }
 }
