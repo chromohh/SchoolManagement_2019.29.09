@@ -3,6 +3,7 @@ package ecutb.data_access;
 import ecutb.model.Course;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDaoList implements CourseDao {
@@ -26,17 +27,29 @@ public class StudentDaoList implements CourseDao {
 
     @Override
     public List<Course> findByName(String name) {
-        return null;
+        List<Course> temp = new ArrayList<Course>();
+        for(Course course: courses){
+            if(name.equalsIgnoreCase(course.getCourseName())){
+                temp.add(course);
+            }
+        }
+        return temp;
     }
 
     @Override
     public List<Course> findB(LocalDate date) {
-        return null;
+        List<Course> temp = new ArrayList<Course>();
+        for(Course course: courses){
+            if(date.equals(course)){
+                temp.add(course);
+            }
+        }
+        return temp;
     }
 
     @Override
     public List<Course> findAll() {
-        return null;
+        return courses;
     }
 
     @Override
