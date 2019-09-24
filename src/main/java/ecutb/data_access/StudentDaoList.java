@@ -9,6 +9,10 @@ import java.util.List;
 public class StudentDaoList implements CourseDao {
     private static List<Course> courses;
 
+    public StudentDaoList(){
+        this.courses = new ArrayList<>();
+    }
+
     @Override
     public Course saveCourse(Course course) {
         if(!courses.contains(course)){courses.add(course); return course;}
@@ -37,7 +41,7 @@ public class StudentDaoList implements CourseDao {
     }
 
     @Override
-    public List<Course> findB(LocalDate date) {
+    public List<Course> findByDate(LocalDate date) {
         List<Course> temp = new ArrayList<Course>();
         for(Course course: courses){
             if(date.equals(course)){

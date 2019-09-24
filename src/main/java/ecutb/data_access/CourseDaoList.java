@@ -2,11 +2,16 @@ package ecutb.data_access;
 
 import ecutb.model.Student;
 
-import javax.swing.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDaoList implements StudentDao {
     private static List<Student> students;
+
+    public CourseDaoList(){
+        this.students = new ArrayList<>();
+    }
 
     @Override
     public Student saveStudent(Student student) {
@@ -26,7 +31,13 @@ public class CourseDaoList implements StudentDao {
 
     @Override
     public List<Student> findByName(String name) {
-        return null;
+        List<Student> temp = new ArrayList<>();
+        for(Student student : students){
+            if(name.equalsIgnoreCase(student.getName())){
+                temp.add(student);
+            }
+        }
+        return temp;
     }
 
     @Override
@@ -41,7 +52,7 @@ public class CourseDaoList implements StudentDao {
 
     @Override
     public List<Student> findAll() {
-        return null;
+        return students;
     }
 
     @Override
