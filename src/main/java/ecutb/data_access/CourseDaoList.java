@@ -22,7 +22,7 @@ public class CourseDaoList implements StudentDao {
     @Override
     public Student findByEmail(String email) {
         for(Student student : students){
-            if(email.equals(student.getEmail())){
+            if(email.equalsIgnoreCase(student.getEmail())){
                 return student;
             }
         }

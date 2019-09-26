@@ -1,5 +1,6 @@
 package ecutb.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -15,10 +16,32 @@ public class Course {
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
+        this.students = new ArrayList<>();
     }
 
-    public void register(Student student){ students.add(student); }
-    public void unregister(Student student){ students.remove(student); }
+    public void register(Student student){
+       boolean noExist = false;
+           for(Student student1 : students) {
+               if (student1 == student) {
+                   noExist = true;
+               }
+           }
+           if (!noExist) {
+               students.add(student);
+           }
+    }
+
+    public void unregister(Student student){
+        boolean noExist = false;
+        for(Student student1: students){
+            if(student1 == student){
+                noExist = true;
+            }
+        }
+        if(noExist){
+            students.remove(student);
+        }
+    }
 
     public int getWeekDuration() { return weekDuration; }
     public void setWeekDuration(int weekDuration) { this.weekDuration = weekDuration; }

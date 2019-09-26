@@ -42,9 +42,9 @@ public class StudentDaoList implements CourseDao {
 
     @Override
     public List<Course> findByDate(LocalDate date) {
-        List<Course> temp = new ArrayList<Course>();
+        List<Course> temp = new ArrayList<>();
         for(Course course: courses){
-            if(date.equals(course)){
+            if(date.equals(course.getStartDate())){
                 temp.add(course);
             }
         }
