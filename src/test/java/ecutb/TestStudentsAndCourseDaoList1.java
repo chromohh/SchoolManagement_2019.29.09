@@ -1,7 +1,6 @@
 package ecutb;
 
-import ecutb.data_access.CourseDaoList;
-import ecutb.model.Course;
+import ecutb.data_access.StudentDaoList;
 import ecutb.model.Student;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,23 +9,23 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestStudentsAndCourseDaoList {
+public class TestStudentsAndCourseDaoList1 {
     private Student testStudent;
     private Student testStudent1;
     private Student testStudent2;
-    private CourseDaoList testEmptyCourseDaoList;
-    private CourseDaoList testNotEmptyCourseDaoList;
+    private StudentDaoList testEmptyStudentDaoList;
+    private StudentDaoList testNotEmptyStudentDaoList;
 
     @Before
     public void init(){
         testStudent = new Student(13, "Adam Adamsson","adam@mail.se", "Adamgatan 15");
         testStudent1 = new Student(14, "Håka Håkansson", "håkan@mail.se", "Håkanvägen 13");
         testStudent2 = new Student(15, "Edvin Edvinsson", "edvin@mail.se", "Edvinvägen 25");
-        testEmptyCourseDaoList = new CourseDaoList();
-        testNotEmptyCourseDaoList = new CourseDaoList();
-        testNotEmptyCourseDaoList.saveStudent(testStudent);
-        testNotEmptyCourseDaoList.saveStudent(testStudent1);
-        testNotEmptyCourseDaoList.saveStudent(testStudent2);
+        testEmptyStudentDaoList = new StudentDaoList();
+        testNotEmptyStudentDaoList = new StudentDaoList();
+        testNotEmptyStudentDaoList.saveStudent(testStudent);
+        testNotEmptyStudentDaoList.saveStudent(testStudent1);
+        testNotEmptyStudentDaoList.saveStudent(testStudent2);
     }
 
     @Test
@@ -47,7 +46,7 @@ public class TestStudentsAndCourseDaoList {
         expected.add(testStudent);
         expected.add(testStudent1);
 
-        CourseDaoList localTest = new CourseDaoList(); //här borde jag egentligen skapat en after metod så att jag inte hade behövt göra en ny lista.
+        StudentDaoList localTest = new StudentDaoList(); //här borde jag egentligen skapat en after metod så att jag inte hade behövt göra en ny lista.
         localTest.saveStudent(testStudent);
         localTest.saveStudent(testStudent);
         localTest.saveStudent(testStudent1);
@@ -59,19 +58,19 @@ public class TestStudentsAndCourseDaoList {
     }
     @Test
     public void TestFindMethods() {
-        Assert.assertNull(testNotEmptyCourseDaoList.findByEmail("asd"));
-        Assert.assertEquals(testNotEmptyCourseDaoList.findByEmail("adam@mail.se"), testStudent);
-        Assert.assertEquals(testNotEmptyCourseDaoList.findByEmail("ADAM@MAIL.SE"), testStudent);
+        Assert.assertNull(testNotEmptyStudentDaoList.findByEmail("asd"));
+        Assert.assertEquals(testNotEmptyStudentDaoList.findByEmail("adam@mail.se"), testStudent);
+        Assert.assertEquals(testNotEmptyStudentDaoList.findByEmail("ADAM@MAIL.SE"), testStudent);
 
         List<Student> expected = new ArrayList<>();
         List<Student> expectedEmpty = new ArrayList<>();
         expected.add(testStudent);
-        Assert.assertEquals(testNotEmptyCourseDaoList.findByName("Adam Adamsson"), expected);
-        Assert.assertEquals(testNotEmptyCourseDaoList.findByName("adam adamsson"), expected);
-        Assert.assertEquals(testNotEmptyCourseDaoList.findByName("asd"), expectedEmpty);
+        Assert.assertEquals(testNotEmptyStudentDaoList.findByName("Adam Adamsson"), expected);
+        Assert.assertEquals(testNotEmptyStudentDaoList.findByName("adam adamsson"), expected);
+        Assert.assertEquals(testNotEmptyStudentDaoList.findByName("asd"), expectedEmpty);
 
-        Assert.assertEquals(testNotEmptyCourseDaoList.findById(15), testStudent2);
-        Assert.assertNull(testNotEmptyCourseDaoList.findById(999));
+        Assert.assertEquals(testNotEmptyStudentDaoList.findById(15), testStudent2);
+        Assert.assertNull(testNotEmptyStudentDaoList.findById(999));
     }
 
 }

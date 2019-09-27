@@ -1,14 +1,12 @@
 package ecutb;
 
-import ecutb.data_access.StudentDao;
-import ecutb.data_access.StudentDaoList;
+import ecutb.data_access.CourseDaoList;
 import ecutb.model.Course;
 import ecutb.model.Student;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +15,8 @@ public class TestCourseAndCourseList {
     private Course testcourse;
     private Course testcourse1;
     private Course testcourse2;
-    private StudentDaoList emptyDaoList;
-    private StudentDaoList daoList;
+    private CourseDaoList emptyDaoList;
+    private CourseDaoList daoList;
     private Student testStudent;
 
     @Before
@@ -26,8 +24,8 @@ public class TestCourseAndCourseList {
         testcourse = new Course(4, "Maths", LocalDate.parse("2020-08-04"), 36);
         testcourse1 = new Course(5, "Gym", LocalDate.parse("2020-08-12"), 40);
         testcourse2 = new Course(6, "Physics", LocalDate.parse("2020-09-08"), 25);
-        emptyDaoList = new StudentDaoList();
-        daoList = new StudentDaoList();
+        emptyDaoList = new CourseDaoList();
+        daoList = new CourseDaoList();
         daoList.saveCourse(testcourse);
         daoList.saveCourse(testcourse1);
         daoList.saveCourse(testcourse2);

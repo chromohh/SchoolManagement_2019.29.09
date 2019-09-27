@@ -1,64 +1,63 @@
 package ecutb.data_access;
 
-import ecutb.model.Course;
+import ecutb.model.Student;
 
-import java.time.LocalDate;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDaoList implements CourseDao {
-    private static List<Course> courses;
+public class StudentDaoList implements StudentDao {
+    private static List<Student> students;
 
     public StudentDaoList(){
-        this.courses = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
     @Override
-    public Course saveCourse(Course course) {
-        if(!courses.contains(course)){courses.add(course); return course;}
-        return null;
+    public Student saveStudent(Student student) {
+      if(!students.contains(student)){ students.add(student); }
+      return student;
     }
 
     @Override
-    public Course findById(int id) {
-        for(Course course : courses){
-            if(id == course.getId()){
-                return course;
+    public Student findByEmail(String email) {
+        for(Student student : students){
+            if(email.equalsIgnoreCase(student.getEmail())){
+                return student;
             }
         }
         return null;
     }
 
     @Override
-    public List<Course> findByName(String name) {
-        List<Course> temp = new ArrayList<Course>();
-        for(Course course: courses){
-            if(name.equalsIgnoreCase(course.getCourseName())){
-                temp.add(course);
+    public List<Student> findByName(String name) {
+        List<Student> temp = new ArrayList<>();
+        for(Student student : students){
+            if(name.equalsIgnoreCase(student.getName())){
+                temp.add(student);
             }
         }
         return temp;
     }
 
     @Override
-    public List<Course> findByDate(LocalDate date) {
-        List<Course> temp = new ArrayList<>();
-        for(Course course: courses){
-            if(date.equals(course.getStartDate())){
-                temp.add(course);
+    public Student findById(int id) {
+        for(Student student : students){
+            if(id == student.getId()){
+                return student;
             }
         }
-        return temp;
+        return null;
     }
 
     @Override
-    public List<Course> findAll() {
-        return courses;
+    public List<Student> findAll() {
+        return students;
     }
 
     @Override
-    public boolean removeCourse(Course course) {
-        if(courses.contains(course)){courses.remove(course); return true;}
+    public boolean deleteStudent(Student student) {
+        if(students.contains(student)){students.remove(student); return true;}
         return false;
     }
 }
