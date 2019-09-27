@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestStudentsAndCourseDaoList1 {
+public class TestStudentsAndStudentDaoList {
     private Student testStudent;
     private Student testStudent1;
     private Student testStudent2;
