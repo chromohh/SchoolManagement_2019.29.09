@@ -124,6 +124,73 @@ public class AppHelper {
         }catch(Exception e){
             System.out.println("faulty inputs"); }
     }
+    public void SearchForCourse(){
+      try{
+        Scanner myInput = new Scanner(System.in);
+        System.out.println("1 to search by id\n2 to search by name\n3 to search by startdate\n 4 to see all courses\nany to return");
+        String x = myInput.nextLine();
+        switch(x){
+            case "1":
+                System.out.println("Enter Id");
+                int i = myInput.nextInt();
+                System.out.println("Name:"+ctdl.findById(i).getCourseName()+" Id:"+ctdl.findById(i).getId()+ " StartDate:"+ ctdl.findById(i).getStartDate()+ " WeekDurations:" + ctdl.findById(i).getWeekDuration());
+                break;
+            case "2":
+                System.out.println("Enter Name");
+                String s = myInput.nextLine();
+                for(Course course : ctdl.findByName(s)){
+                System.out.println("Name:"+course.getCourseName()+" Id:"+course.getId()+ " StartDate:"+ course.getStartDate()+ " WeekDurations:" +course.getWeekDuration());
+                }
+            break;
+            case "3":
+                System.out.println("enter startdate formatted as yyyy-mm-dd");
+                LocalDate l = LocalDate.parse(myInput.nextLine());
+                for(Course course : ctdl.findByDate(l)){
+                    System.out.println("Name:"+course.getCourseName()+" Id:"+course.getId()+ " StartDate:"+ course.getStartDate()+ " WeekDurations:" +course.getWeekDuration());
+                }
+            case "4":
+                for(Course course : ctdl.findAll()){
+                System.out.println("Name:"+course.getCourseName()+" Id:"+course.getId()+ " StartDate:"+ course.getStartDate()+ " WeekDurations:" +course.getWeekDuration());
+                break;
+            }
+        }
+      }catch(Exception n){
+          System.out.println("faulty inputs");
+      }
+    }
+    public void SearchForStudent(){
+        try{
+        Scanner myInput = new Scanner(System.in);
+        System.out.println("1 to search by id\n2 to search by name\n3 to search by email\n 4 to see all students\nany to return");
+        String x = myInput.nextLine();
+        switch(x){
+            case "1":
+                System.out.println("Enter Id");
+                int i = myInput.nextInt();
+                System.out.println("Name:" + stdl.findById(i).getName() +" Id:"+stdl.findById(i).getId() + " Mail:"+ stdl.findById(i).getEmail() + " Address:" + stdl.findById(i).getAddress());
+                break;
+            case "2":
+                System.out.println("Enter Name");
+                String s = myInput.nextLine();
+                for(Student student : stdl.findByName(s)){
+                    System.out.println("Name:"+student.getName()+" Id:"+student.getId()+ " Mail:"+ student.getEmail()+ " Address:" +student.getAddress());
+                }
+                break;
+            case "3":
+                System.out.println("email");
+                String l = myInput.nextLine();
+                System.out.println("Name:"+stdl.findByEmail(l).getName()+" Id:"+stdl.findByEmail(l).getId()+ " Mail:"+ stdl.findByEmail(l).getEmail()+ " Address:" +stdl.findByEmail(l).getAddress());
+            case "4":
+                for(Student student : stdl.findAll()){
+                    System.out.println("Name:"+student.getName()+" Id:"+student.getId()+ " Mail:"+ student.getEmail()+ " Address:" +student.getAddress());
+                    break;
+                }
+        } }catch(Exception n){
+        System.out.println("faulty inputs");
+    }
+    }
+    public void EditCourse(){}
+    public void EditStudent(){}
 }
 
 
