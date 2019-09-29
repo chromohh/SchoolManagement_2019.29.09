@@ -26,11 +26,15 @@ public class App
                 case "3": RemoveorAddStudentFromCourse();
                 break;
                 case "4": help.SearchForStudent();
+                break;
                 case "5": help.SearchForCourse();
-                case "6":
-                case "7":
-
-                case "E": keepAlive = false; break;
+                break;
+                case "6": help.EditCourse();
+                break;
+                case "7": help.EditStudent();
+                break;
+                case "E": keepAlive = false;
+                break;
             }
         }
 

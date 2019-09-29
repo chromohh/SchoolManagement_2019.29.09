@@ -189,8 +189,63 @@ public class AppHelper {
         System.out.println("faulty inputs");
     }
     }
-    public void EditCourse(){}
-    public void EditStudent(){}
+    public void EditCourse(){
+        try{
+        Scanner myInput = new Scanner(System.in);
+
+            System.out.println("1 to edit Week Duration\n2 to edit startdate\n3 to edit course name");
+            String x = myInput.nextLine();
+            System.out.println("Choose wich course to edit for by entering the id.");
+            for(Course c : ctdl.findAll()){
+                System.out.println("name: "+ c.getCourseName() + " Id: " + c.getId() + " startdate: " + c.getStartDate());
+            }
+            int index = myInput.nextInt();
+            switch(x){
+                case "1":
+                    System.out.println("enter new weekduration");
+                    ctdl.findById(index).setWeekDuration(myInput.nextInt());
+                    break;
+                case "2":
+                    System.out.println("enter new startdate formatted ass YYYY-MM-DD");
+                    ctdl.findById(index).setStartDate(LocalDate.parse(myInput.next()));
+                    break;
+                case "3":
+                    System.out.println("enter new course name");
+                    ctdl.findById(index).setCourseName(myInput.nextLine());
+                    break;
+            }
+        }catch(Exception e){
+            System.out.println("faulty Inputs");
+        }
+    }
+    public void EditStudent(){
+        try{
+        Scanner myInput = new Scanner(System.in);
+
+        System.out.println("1 to edit Mail\n2 to edit Address\n3 to Name");
+        String x = myInput.nextLine();
+        System.out.println("Choose wich student to edit for by entering the id.");
+        for(Student c : stdl.findAll()){
+            System.out.println("name:"+ c.getName()+ " id:" +  c.getId() + " email:" + c.getEmail());
+        }
+        int index = myInput.nextInt();
+        switch(x){
+            case "1":System.out.println("enter new Mail");
+                stdl.findById(index).setEmail(myInput.next());
+            break;
+            case "2":System.out.println("enter new Address");
+                stdl.findById(index).setAddress(myInput.next());
+            break;
+            case "3":
+                System.out.println("enter new name");
+                stdl.findById(index).setName(myInput.next());
+            break;
+        }
+        }
+        catch(Exception e){
+            System.out.println("faulty input");
+        }
+    }
 }
 
 

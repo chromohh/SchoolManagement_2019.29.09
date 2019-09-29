@@ -50,4 +50,5 @@ public class Course {
     public List<Student> getStudents() { return students; }
     public int getId() { return id; }
     public String getCourseName() { return courseName; }
+    public void setCourseName(String courseName) { this.courseName = courseName; }
 }
